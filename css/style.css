@@ -304,16 +304,19 @@ button:hover{
 }
 
 .about-image{
-    flex: 1;
+    flex: 1 1 320px;
 }
 .about-image img{
     width: 100%;
     max-width: 500px;
     border-radius: 20px;
+    display: block;
+    margin: 0 auto;
 }
 
 .about-content{
-    flex: 1;
+    flex: 1 1 320px;
+    min-width: 280px;
 }
 
 .about-content h2{
@@ -356,11 +359,11 @@ button:hover{
 }
 
 .contact-form{
-    flex: 2;
+    flex: 2 1 350px;
 }
 
 .contact-info{
-    flex: 1;
+    flex: 1 1 280px;
 }
 
 .contact-form h2,
@@ -449,6 +452,8 @@ footer{
     z-index:9999;
 
     transition:.3s;
+
+    animation: whatsappPulse 2s infinite;
 }
 
 .whatsapp-btn:hover{
@@ -464,37 +469,9 @@ footer{
     font-size: 30px;
     cursor: pointer;
 }
-@media (max-width: 768px){
-
-    .menu-toggle{
-        display: block;
-    }
-
-    nav ul{
-        display: none;
-
-        position: absolute;
-
-        top: 80px;
-        left: 0;
-
-        width: 100%;
-
-        background: #111;
-
-        flex-direction: column;
-
-        text-align: center;
-
-        padding: 20px 0;
-
-        gap: 15px;
-    }
+nav ul.active{
+    display: flex;
 }
-
-    nav ul.active{
-        display: flex;
-    }
 .active {
     color: #D4AF37;
     font-weight: 600;
@@ -528,6 +505,8 @@ nav a:hover::after{
 }
 .gallery-filter button{
     margin: 5px;
+    background: #1a1a1a;
+    color: white;
 }
 .lightbox{
     position: fixed;
@@ -618,10 +597,6 @@ nav a:hover::after{
 
     box-shadow:
     0 5px 20px rgba(212,175,55,.4);
-}
-.gallery-filter button{
-    background: #1a1a1a;
-    color: white;
 }
 .hero-content{
     max-width: 900px;
@@ -717,19 +692,6 @@ nav a:hover::after{
     gap:15px;
 
     flex-wrap:wrap;
-}
-@media(max-width:768px){
-
-    .hero h2{
-
-        font-size:3.2rem;
-    }
-
-    .hero p{
-
-        font-size:1rem;
-    }
-
 }
 .stat{
     transition: 0.3s;
@@ -932,14 +894,6 @@ nav a:hover::after{
     box-shadow:
     0 10px 25px rgba(212,175,55,.4);
 }
-@media(max-width:768px){
-
-    .cta-section h2{
-
-        font-size:2.2rem;
-    }
-
-}
 @keyframes whatsappPulse{
 
     0%{
@@ -955,31 +909,82 @@ nav a:hover::after{
     }
 }
 
-.whatsapp-btn{
-    animation:
-    whatsappPulse 2s infinite;
-}
-@media (max-width:768px){
+/* ===== MOBILE (regroupe toutes les adaptations petit écran) ===== */
+@media (max-width: 768px){
+
+    .menu-toggle{
+        display: block;
+    }
+
+    nav ul{
+        display: none;
+
+        position: absolute;
+
+        top: 80px;
+        left: 0;
+
+        width: 100%;
+
+        background: #111;
+
+        flex-direction: column;
+
+        text-align: center;
+
+        padding: 20px 0;
+
+        gap: 15px;
+    }
+
+    .hero h2{
+        font-size: 3.2rem;
+    }
+
+    .hero p{
+        font-size: 1rem;
+    }
+
+    .cta-section h2{
+        font-size: 2.2rem;
+    }
 
     .page-banner{
-
-        height:60vh;
-
-        padding-top:120px;
+        height: 60vh;
+        padding-top: 120px;
     }
 
     .page-banner h1{
-
-        font-size:2.5rem;
+        font-size: 2.5rem;
     }
 
     .page-banner p{
-
-        font-size:1rem;
-
-        width:90%;
-
-        margin:auto;
+        font-size: 1rem;
+        width: 90%;
+        margin: auto;
     }
 
+    /* Empile proprement le texte et l'image au lieu de les compresser */
+    .about-section,
+    .contact-section{
+        flex-direction: column;
+    }
+
+    .about-content,
+    .contact-form,
+    .contact-info{
+        width: 100%;
+    }
+
+    .about-section,
+    .services-page,
+    .contact-section,
+    .stats,
+    .services,
+    .gallery-grid,
+    .why-us,
+    .home-stats{
+        padding-left: 25px;
+        padding-right: 25px;
+    }
 }
